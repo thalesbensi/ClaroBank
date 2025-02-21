@@ -2,20 +2,17 @@ package com.thalesbensi.ClaroBank.service;
 
 import com.thalesbensi.ClaroBank.domain.model.User;
 import com.thalesbensi.ClaroBank.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
 
     @GetMapping("/{id}")
     public User findById(@PathVariable Long id) {
