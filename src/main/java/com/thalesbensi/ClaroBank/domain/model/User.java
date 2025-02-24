@@ -5,7 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 @Data
 public class User {
 
@@ -22,9 +23,9 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Card userCard;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Feature> features;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<News>news;
 }
