@@ -12,16 +12,15 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    @GetMapping("/{id}")
     public User findById(@PathVariable Long id) {
           return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
-    @PostMapping()
+
     public User createUser(@RequestBody User userToCreate) {
-        if (userRepository.existsByAccountNumber(userToCreate.getUserAccount().getAccountNumber())) {
+        if (userRepository.existsByUserAccount_AccountNumber(userToCreate.getUserAccount().getAccountNumber())) {
             throw new IllegalArgumentException("This Account number already exists");
         }
         return userRepository.save(userToCreate);
