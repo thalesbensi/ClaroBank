@@ -17,6 +17,6 @@ public class Card {
     @Column(unique = true, nullable = false)
     private String cardNumber;
 
-    @Column(name = "available_limit", scale = 2, precision = 13, nullable = false)
+    @Column(name = "available_limit",scale = 5, precision = 17, nullable = false)
     private BigDecimal cardLimit = BigDecimal.ZERO;
 }
